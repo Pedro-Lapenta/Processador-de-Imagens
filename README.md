@@ -13,6 +13,15 @@ Oferecer uma aplicação simples e interativa para o processamento digital de im
 ## 🚀 Como Usar
 
 1. **Execute o programa `ImageGUI.java`** com suporte à interface Swing.
+
+    1.1 Os comandos são:
+
+```bash
+cd src
+javac ImageGUI.java
+java ImageGUI
+```
+
 2. A interface será aberta com as seguintes opções:
 
    - **Carregar Imagem:** Abre um seletor de arquivos para escolher uma imagem do computador.
@@ -72,6 +81,7 @@ Oferecer uma aplicação simples e interativa para o processamento digital de im
   - `DynamicRangeCompression.java`
 
 Cada classe encapsula seu próprio filtro, com os métodos:
+
 - `apply<NomeDoFiltro>Filter(BufferedImage image)`
 - `buildImageFromRGBMatrix(int[][][] matrix)`
 
@@ -96,4 +106,3 @@ Desenvolvido como parte da disciplina **Processamento Digital de Imagens** — F
 
 Este projeto é apenas para fins acadêmicos.  
 Sinta-se livre para explorar, modificar e aprender com o código!
-
