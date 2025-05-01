@@ -29,7 +29,8 @@ public class ImageGUI extends JFrame {
             "Ruído Sal e Pimenta",
             "Filtro de Média",
             "Filtro de Mediana",
-            "Binarização ou limiarização",
+            "Binarização",
+            "Limiarização",
             "Laplaciano",
             "Sobel",
             "Compressão Dinâmica"
@@ -97,7 +98,7 @@ public class ImageGUI extends JFrame {
                     MedianFilter handler = new MedianFilter("");
                     int[][][] matrix = handler.applyMedianFilter(originalImage);
                     processedImage = handler.buildImageFromRGBMatrix(matrix);
-                } else if ("Binarização ou limiarização".equals(selectedFilter)) {
+                } else if ("Binarização".equals(selectedFilter)) {
                     String input = JOptionPane.showInputDialog(this, "Informe o limiar (0 a 255):", "128");
                     if (input != null) {
                         try {
@@ -108,6 +109,25 @@ public class ImageGUI extends JFrame {
                             }
                             BinarizedImage handler = new BinarizedImage("");
                             int[][][] matrix = handler.applyBinarizationFilter(originalImage, threshold);
+                            processedImage = handler.buildImageFromRGBMatrix(matrix);
+                        } catch (NumberFormatException ex) {
+                            JOptionPane.showMessageDialog(this, "Valor inválido para limiar.");
+                            return;
+                        }
+                    } else {
+                        return;  // Usuário cancelou o input
+                    }
+                } else if ("Limiarização".equals(selectedFilter)) {
+                    String input = JOptionPane.showInputDialog(this, "Informe o limiar (0 a 255):", "128");
+                    if (input != null) {
+                        try {
+                            int threshold = Integer.parseInt(input);
+                            if (threshold < 0 || threshold > 255) {
+                                JOptionPane.showMessageDialog(this, "O limiar deve estar entre 0 e 255.");
+                                return;
+                            }
+                            LimiarizationImage handler = new LimiarizationImage("");
+                            int[][][] matrix = handler.applyLimiarizationFilter(originalImage, threshold);
                             processedImage = handler.buildImageFromRGBMatrix(matrix);
                         } catch (NumberFormatException ex) {
                             JOptionPane.showMessageDialog(this, "Valor inválido para limiar.");

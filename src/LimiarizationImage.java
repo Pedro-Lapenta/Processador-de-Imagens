@@ -1,12 +1,12 @@
 import java.awt.image.BufferedImage;
 
-public class BinarizedImage {
+public class LimiarizationImage extends Image {
 
-    private String path;
+    public LimiarizationImage(String filePath) {
+        super(filePath);
+    }
 
-    public BinarizedImage(String path) {
-        this.path = path;
-    }    public int[][][] applyBinarizationFilter(BufferedImage image, int threshold) {
+    public int[][][] applyLimiarizationFilter(BufferedImage image, int threshold) {
         int width = image.getWidth();
         int height = image.getHeight();
         int[][][] result = new int[height][width][3];
@@ -14,19 +14,19 @@ public class BinarizedImage {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 int rgb = image.getRGB(x, y);
-                int red   = (rgb >> 16) & 0xFF;
+                int red = (rgb >> 16) & 0xFF;
                 int green = (rgb >> 8) & 0xFF;
-                int blue  = rgb & 0xFF;
+                int blue = rgb & 0xFF;
 
                 // Converter para tons de cinza
-                int gray = (int)(0.3 * red + 0.59 * green + 0.11 * blue);
+                int gray = (int) (0.3 * red + 0.59 * green + 0.11 * blue);
 
                 // Aplicar limiar
-                int binary = (gray >= threshold) ? 255 : 0;
+                int newGray = (gray >= threshold) ? gray : 0;
 
-                result[y][x][0] = binary;
-                result[y][x][1] = binary;
-                result[y][x][2] = binary;
+                result[y][x][0] = newGray;
+                result[y][x][1] = newGray;
+                result[y][x][2] = newGray;
             }
         }
 
