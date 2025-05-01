@@ -18,10 +18,10 @@ public class LimiarizationImage extends Image {
                 int green = (rgb >> 8) & 0xFF;
                 int blue = rgb & 0xFF;
 
-                // Convert to grayscale
+                // Converter para tons de cinza
                 int gray = (int) (0.3 * red + 0.59 * green + 0.11 * blue);
 
-                // Apply threshold
+                // Aplicar limiar
                 int newGray = (gray >= threshold) ? gray : 0;
 
                 result[y][x][0] = newGray;
