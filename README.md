@@ -14,13 +14,25 @@ Oferecer uma aplicação simples e interativa para o processamento digital de im
 
 1. **Execute o programa `ImageGUI.java`** com suporte à interface Swing.
 
-    1.1 Os comandos são:
+    1.1. Os comandos são:
 
-```bash
-cd src
-javac ImageGUI.java
-java ImageGUI
-```
+    ```bash
+    cd src
+    javac ImageGUI.java
+    java ImageGUI
+    ```
+
+    1.2. Ou, via bash script:
+
+    ```bash
+    source ./run.sh
+    ```
+
+    1.3 Ou, via bat script (Windows):
+    Executar `run.bat`.
+
+    1.4 Ou, via `.jar`:
+    Executar `ProcessadorDeImagens.jar` na pasta `bin`.
 
 2. A interface será aberta com as seguintes opções:
 
